@@ -10,11 +10,12 @@ func _ready():
 	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(_delta):
+	for coin in coins.get_children():
+		coin.connect("collect",_on_coin_collect)
 
 
-func _on_coin_collect(node):
+func _on_coin_collect(_node):
 	coin_count += 1
 	coin_label.clear()
 	coin_label.add_text(" x " + str(coin_count))
@@ -27,4 +28,4 @@ func _on_porta_game_complete():
 
 
 func _on_button_pressed():
-	pass
+	get_tree().change_scene_to_file("res://nodes/levelb.tscn")
